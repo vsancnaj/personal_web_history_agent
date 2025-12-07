@@ -8,9 +8,9 @@
 data/
 # — or more selectively:
 data/chroma_db/
-# data/chroma_db_full/
+data/chroma_db_full/
 # data/history_copy.db
-# data/user_profile.txt
+data/user_profile.txt
 instructions.txt
 
 # Python cache
