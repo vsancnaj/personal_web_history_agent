@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 import datetime
 import numpy as np
 np.float_ = np.float64
@@ -13,7 +12,7 @@ TEST_THREAD_ID = "streamlit_session"
 
 # Load user profile once
 USER_PROFILE = load_profile()
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.join(os.path.dirname(__file__), ""))
 
 # --- STREAMLIT SETUP ---
 st.set_page_config(page_title="Personal Web Memory Agent", layout="wide")

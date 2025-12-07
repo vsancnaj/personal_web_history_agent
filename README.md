@@ -57,6 +57,7 @@ personal_web_history_agent/
 │   └── chroma_db_full/ # retrieved a larger date range from my history -> '2025-01-01', '2025-12-01'
 │   └── user_profile.txt # basic user profile generated to give the AI context
 ├── src/
+├── __init__.py   
 │   ├── extract_urls.py   
 │   ├── scraping.py   
 │   ├── profile_gen.py
