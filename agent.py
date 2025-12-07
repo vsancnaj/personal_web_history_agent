@@ -194,19 +194,6 @@ agent = create_agent(
     checkpointer=checkpointer
 )
 
-# def history_qa_agent_invoke(question: str, thread_id: str) -> HistoryResponse:
-#     """Invokes the agent, managing conversation history via thread_id for Streamlit."""
-
-#     input_state = {
-#         "messages": [HumanMessage(content=question)],
-#     }
-    
-#     result = agent.invoke(
-#         input_state, # Use the dict-wrapped input
-#         config={"configurable": {"thread_id": thread_id}}
-#     )
-#     return result["structured_response"]
-
 def history_qa_agent_invoke(question: str, thread_id: str) -> HistoryResponse:
     state = {"messages": [HumanMessage(content=question)]}
 
