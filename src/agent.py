@@ -14,6 +14,7 @@ from langchain.tools import tool
 from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent # The main agent builder
 from langchain.agents.structured_output import ToolStrategy # Strategy for Pydantic output
+from langchain_core.messages import ToolMessage
 from langgraph.checkpoint.memory import InMemorySaver # Persistent memory
 
 load_dotenv() 
@@ -193,18 +194,52 @@ agent = create_agent(
     checkpointer=checkpointer
 )
 
-def history_qa_agent_invoke(question: str, thread_id: str) -> HistoryResponse:
-    """Invokes the agent, managing conversation history via thread_id for Streamlit."""
+# def history_qa_agent_invoke(question: str, thread_id: str) -> HistoryResponse:
+#     """Invokes the agent, managing conversation history via thread_id for Streamlit."""
 
-    input_state = {
-        "messages": [HumanMessage(content=question)],
-    }
+#     input_state = {
+#         "messages": [HumanMessage(content=question)],
+#     }
     
-    result = agent.invoke(
-        input_state, # Use the dict-wrapped input
-        config={"configurable": {"thread_id": thread_id}}
-    )
-    return result["structured_response"]
+#     result = agent.invoke(
+#         input_state, # Use the dict-wrapped input
+#         config={"configurable": {"thread_id": thread_id}}
+#     )
+#     return result["structured_response"]
+
+def history_qa_agent_invoke(question: str, thread_id: str) -> HistoryResponse:
+    state = {"messages": [HumanMessage(content=question)]}
+
+    while True:
+        result = agent.invoke(state, config={"configurable": {"thread_id": thread_id}})
+        msg = result["messages"][-1]
+
+        # 1. If LLM wants to call a tool
+        if hasattr(msg, "tool_calls") and msg.tool_calls:
+            tool_call = msg.tool_calls[0]
+            tool_name = tool_call["name"]
+            tool_args = tool_call["args"]
+            tool_id = tool_call["id"]
+
+            # 2. Execute the tool
+            if tool_name == "search_history":
+                tool_result = search_history.invoke(tool_args)
+            elif tool_name == "get_links":
+                tool_result = get_links.invoke(tool_args)
+            else:
+                tool_result = "Unknown tool"
+
+            state["messages"].append(
+                ToolMessage(
+                    content=tool_result,
+                    tool_call_id=tool_id,
+                )
+            )
+            continue
+
+        # 4. Final output
+        return result["structured_response"]
+
 
 if __name__ == "__main__":
     TEST_THREAD_ID = "test-session-001"
