@@ -7,9 +7,9 @@
 # Data directory (vector stores, raw history, scraped data)
 # data/
 # — or more selectively:
-# data/chroma_db/
+data/chroma_db/
 # data/chroma_db_full/
-data/history_copy.db
+# data/history_copy.db
 # data/user_profile.txt
 instructions.txt
 
