@@ -3,6 +3,7 @@ import os
 import datetime
 import numpy as np
 np.float_ = np.float64
+import sys, os
 # Import core agent components from your agent logic file
 from src.agent import history_qa_agent_invoke, HistoryResponse, load_profile 
 
@@ -12,6 +13,7 @@ TEST_THREAD_ID = "streamlit_session"
 
 # Load user profile once
 USER_PROFILE = load_profile()
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # --- STREAMLIT SETUP ---
 st.set_page_config(page_title="Personal Web Memory Agent", layout="wide")
