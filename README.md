@@ -48,7 +48,7 @@ This demonstrates a full end-to-end pipeline: scraping → document processing �
 
 ## Project Structure
 ```
-nora/
+personal_web_history_agent/
 ├── .venv/
 ├── .env
 ├── data/
@@ -68,7 +68,6 @@ nora/
 
 > Prerequisite: Obtain your OpenAI API keys for embedding and gpt use!
 
-```bash
 # 1. Clone the repository
 git clone https://github.com/vsancnaj/personal_web_history_agent.git
 cd personal_web_history_agent
@@ -97,7 +96,7 @@ python src/profile_gen.py
 
 # 8. Launch the chat UI
 python app.py
-```
+
 
 
 
