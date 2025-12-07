@@ -61,8 +61,9 @@ personal_web_history_agent/
 │   ├── extract_urls.py   
 │   ├── scraping.py   
 │   ├── profile_gen.py
-│   ├── agent.py          
+        
 ├── app.py
+├── agent.py 
 └── README.md
 ```
 ## How to run
