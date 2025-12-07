@@ -1,0 +1,27 @@
+# Virtual environment
+.venv/
+
+# Local env vars
+.env
+
+# Data directory (vector stores, raw history, scraped data)
+data/
+# — or more selectively:
+data/chroma_db/
+# data/chroma_db_full/
+# data/history_copy.db
+# data/user_profile.txt
+instructions.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.cache
+
+# Streamlit temporary, logs
+*.log
+
+# Ignore platform files
+.DS_Store
