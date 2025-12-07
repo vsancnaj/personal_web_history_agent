@@ -1,4 +1,6 @@
 import os
+import numpy as np
+np.float_ = np.float64
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_core.output_parsers import StrOutputParser

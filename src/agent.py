@@ -1,6 +1,8 @@
 # src/agent.py
 
 import os
+import numpy as np
+np.float_ = np.float64
 from dotenv import load_dotenv
 from typing import List, Any, Optional
 import datetime

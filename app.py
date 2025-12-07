@@ -1,6 +1,8 @@
 import streamlit as st
 import os
 import datetime
+import numpy as np
+np.float_ = np.float64
 # Import core agent components from your agent logic file
 from src.agent import history_qa_agent_invoke, HistoryResponse, load_profile 
 

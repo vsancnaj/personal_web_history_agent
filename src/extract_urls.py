@@ -2,6 +2,8 @@
 
 # import libraries
 import sqlite3
+import numpy as np
+np.float_ = np.float64
 from pathlib import Path
 from datetime import datetime, timedelta
 
