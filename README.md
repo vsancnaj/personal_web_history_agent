@@ -9,6 +9,14 @@ A lightweight personal tool that:
 - Embeds and indexes them into a vector store,  
 - Lets you query your past browsing via a chat UI powered by an LLM + retrieval.
 
+## DEMO
+
+
+https://github.com/user-attachments/assets/ae116288-edde-45ac-82c1-467ac49aa06b
+
+
+
+
 This demonstrates a full end-to-end pipeline: scraping → document processing → embedding + indexing → retrieval-augmented agent → interactive UI.
 
 > Prerequisite: Obtain your OpenAI API keys for embedding and gpt use!
